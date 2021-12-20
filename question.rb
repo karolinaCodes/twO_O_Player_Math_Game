@@ -1,25 +1,28 @@
 class Question
+  attr_accessor :response, :question, :answer
 
-  attr_accessor :response
+  NUM1 = rand(1..100)
+  NUM2 = rand(1..100)
+
   def instantiate
-    @num1 = rand(1..100)
-    @num2 = rand(1..100)
-    @question = "What is #{@num1} plus #{@num2}"
-    @answer = @num1 + @num2
+    @question = "What is #{NUM1} plus #{NUM2}?"
+    @answer = NUM1 + NUM2
     @response = nil
   end
 
-  def ask(player)
-    puts "#{player}: #{@question}"
+  def ask player 
+    puts "#{player}: #{self.question}"
+    self.response = gets.chomp.to_i
   end
 
-  def validate(response)
-    if (response == " ")
-      puts "You did not write answer."
-    elsif (response.to_i == @answer)
+  def validate response 
+    if (self.response == " ")
+      puts "Please provide an answer."
+    elsif (self.response.to_i == self.answer)
       puts "YES! You are correct!"
     else 
       puts "Seriously?! No."
     end
   end
 end
+
