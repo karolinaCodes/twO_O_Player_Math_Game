@@ -4,7 +4,7 @@ class Question
   NUM1 = rand(1..100)
   NUM2 = rand(1..100)
 
-  def instantiate
+  def initialize
     @question = "What is #{NUM1} plus #{NUM2}?"
     @answer = NUM1 + NUM2
     @response = nil
