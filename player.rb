@@ -1,4 +1,5 @@
 class Player
+  attr_accessor :lives
 
   def instantiate(id)
     @id
@@ -7,15 +8,7 @@ class Player
   end
 
   def lose_life
-    @lives -= 1
+    self.lives -= 1
   end
-
-  # def increment_score
-  #   @score += 1
-  # end
-
-  # def decrement_score
-  #   @score -= 1
-  # end
 
 end
