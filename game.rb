@@ -1,7 +1,7 @@
  class Game
   attr_accessor :curr_player, :player1, :player2
 
-  def instantiate player1, player2
+  def initialize player1, player2
     @curr_player = 0
     @player1 = player1
     @player2 = player2
