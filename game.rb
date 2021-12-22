@@ -1,31 +1,40 @@
  class Game
-  attr_accessor :curr_player, :player1, :player2
+  attr_accessor :turn, :player1, :player2, :curr_player
 
+  #player 1 and player 2 are player objects
   def initialize player1, player2
-    @curr_player = 0
     @player1 = player1
     @player2 = player2
+    @turn = 0
+    @curr_player = player1
   end
 
   def next_turn
-    puts "NEW TURN"
-    @curr_player += 1
-    if (@curr_player % 2 === 0)
-      puts "#{player1}'s Turn"
+    # don't put this string for the first question
+    # if (self.turn != 0)
+    #   puts "-----------NEW TURN-----------"
+    # end
+
+    self.turn += 1
+
+    if (self.turn % 2 != 0)
+      puts "-----#{player1.name}'s Turn-----"
+      self.curr_player = self.player1
     else
-      puts "#{player2}'s Turn"
+      puts "-----#{player2.name}'s Turn-----"
+      self.curr_player = self.player2
     end
  end
 
  def current_score
-  puts "P1 #{self.player1.score} vs P2 #{self.player2.score}"
+  puts "// P1: #{self.player1.lives}/3 vs P2: #{self.player2.lives}/3 //"
  end
 
  def ending_message
-  if player1.score == 0
-    puts "Player 2 is the winner!"
-  elsif player2.score == 0
-    puts "Player 1 is the winner!"
+  if player1.lives == 0
+    puts "Player 2 wins with the score of #{player2.lives}/3"
+  elsif player2.lives == 0
+    puts "Player 1 wins with the score of #{player1.lives}/3"
   end
 
   puts "----- Game Over. Thanks for playing. -----"
